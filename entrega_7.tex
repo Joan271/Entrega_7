@@ -1,0 +1,73 @@
+\documentclass[11pt]{article}
+\input{packages/preamble_v1.0.tex}
+\settitle[\Large Subgrupo 4:\\ 
+\Large Juan Manuel Sánchez Arrua,\\ 
+\Large Jaime Sánchez-Carralero Morato,\\
+\Large Óscar Marzal Bardón,\\
+\Large Joan Andrés Mercado Tandazo][ELECTRODINÁMICA CLÁSICA]{Entrega 7}
+\setformat{Electrodinámica Clásica - Unidad 5}
+\newcommand{\Prad}{P_\textrm{rad}}
+\newcommand{\Ekin}{\mathcal{E}_\textrm{kin}}
+\newcommand{\trel}{\tau_\textrm{rel}}
+\begin{document}
+\brightmode
+\maketitle
+\section*{Ejercicio 3}
+Un electrón entra con velocidad no relativista $\vec{v}$ en una región del espacio donde hay un campo magnético uniforme y constante, $\vec{B}$, perpendicular a dicha velocidad. Al mismo tiempo que rota, la partícula radia y al perder energía sigue una trayectoria espiral. Asumiendo que cada revolución del electrón es esencialmente circular, 
+\begin{enumerate}[label=\roman*)]
+    \item calcular la potencia radiada;
+    \item obtener la variación de la energía cinética de la partícula, expresándola en función del tiempo de relajación $\tau_{\text{rel}}$ (aquel en el que su energía se reduce por un factor $1/e$);
+    \item calcular $\tau_{\text{rel}}$ para dos valores del campo magnético, $1 \, \text{T}$ y $25 \, \mu\text{T}$, y justificar que la asunción de órbitas aproximadamente circulares es adecuada en ambos casos.
+\end{enumerate}
+\Resolucion
+
+\begin{enumerate}[label=\roman*{})]
+    \item Como $v\ll c$ se emplea la expresión de la potencia radiada de Larmor, i.e:
+    \begin{equation}
+        P_\textrm{rad} = \dfrac{q^2 a^2}{6\pi c^3}\label{eq: Larmor}
+    \end{equation}
+    Como se indica que se asuma que la trayectoria es circular durante cada revolución, se tiene: 
+    \begin{equation}
+        F = q\dfrac{v}{c}B \;\Rightarrow\; a_c = \dfrac{qvB}{mc} 
+    \end{equation}
+    Donde $a_c$ es la aceleración centrípeta, $q$ la carga del electrón y $m$ su masa. Por tanto sustitiyendo en \eqref{eq: Larmor} se tiene: 
+    \begin{equation}
+        \Prad = \dfrac{q^4 v^2 B^3}{6\pi c^5m^2}
+    \end{equation}
+    \item Buscamos mediante la potencia radiada, la energía cinética de la partícula. Como: 
+    \begin{equation}
+        \Prad = -\dv{\Ekin}{t} = \dfrac{q^4 B^2}{3\pi c^5 m ^3}\Ekin
+    \end{equation}
+    Donde se ha empleado la expresión de la energía cinética $\Ekin$ para sustituir el módulo de la velocidad $v^2$. Resolvemos la EDO y encontramos el \textit{tiempo de relajación} $\trel$: 
+    \begin{align}   
+        \trel &= \dfrac{3\pi c^5 m^3 }{q^4 B^2}\\ 
+        \int_{\Ekin(0)}^{\Ekin(t)}\dfrac{\dd{\Ekin '}}{\Ekin '} &= \int_{0}^{t}\dfrac{\dd{t'}}{\trel} \;\Rightarrow\; \Ekin(t) = \Ekin(0)e^{-t/\trel}\label{eq: Ekin (t)}
+    \end{align}
+    \item De la última expresión \eqref{eq: Ekin (t)}, recuperamos la expresión para el módulo de la velocidad: 
+    \begin{equation}
+        v^2(t) = v^2(0)e^{-t/\trel} \;\Rightarrow\; v(t) = v(0)e^{-t/(2\trel)}
+    \end{equation}  
+    A continuación, como el movimiento se aproxima como circular, se tiene: 
+    \begin{equation}
+        \dfrac{qvB}{c} = \dfrac{mv^2}{r} \;\Rightarrow\; r = \dfrac{mvc}{qB}
+    \end{equation}
+    Derivando esta expresión, estimamos la velocidad radial de la partícula: 
+    \begin{equation}
+        \dot{r} = -\dfrac{mc}{qB}\dfrac{1}{2\trel}e^{-t/(2\trel)}\label{eq: vel. radial} 
+    \end{equation}
+    Nos interesa también cuanto es el periodo ($T$) del movimiento circular: 
+    \begin{equation}
+        \dfrac{v}{r} = \dfrac{2\pi}{T} \;\Rightarrow\; T = 2\pi r/v = \dfrac{2\pi mc}{qB}
+    \end{equation}
+    De esta forma podemos reescribir el radio de la órbita y la velocidad radial como: 
+    \begin{align}
+        r(t) &= v(0) \dfrac{T}{2\pi}e^{-t/(2\trel)}\\ 
+        \dot{r}(t) = -\dfrac{v(0)}{4\pi}\dfrac{T}{\trel}e^{-t/(2\trel)} &= -\dfrac{T}{4\pi \trel} v(t)\\
+        \dfrac{T}{\trel} &= 2\pi\dfrac{mc}{qb}\dfrac{q^4B^2}{3\pi c^5 m^3 = \dfrac{2}{3} \dfrac{q^3 B}{m^2 c^4}
+    \end{align}
+    De estas expresiones inferimos que si $T/\trel\ll 1$ entonces la aproximación al movimiento circular que se realiza se sostiene, pues la variación en el radio sería despreciable durante un periodo (veáse el argumento de la exponencial) e igualmente lo sería la velocidad radial frente al módulo de la velocidad de la partícula (véase su prefactor), siendo esencialmente entonces la dirección tangencial, lo que se corresponde con un movimiento circular durante un periodo, y en general espiral para un tiempo arbitrario.\par 
+    Entonces veamos cuáles son los tiempos de relajación para los campos magnéticos que se nos plantean y demostramos que la aproximación circular es válida mediante el cociente $T/\trel$: 
+    
+    \item 
+\end{enumerate}
+\end{document}
